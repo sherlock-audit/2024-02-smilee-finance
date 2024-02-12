@@ -1,0 +1,24 @@
+[submodule "smilee-v2-contracts/lib/forge-std"]
+	path = smilee-v2-contracts/lib/forge-std
+	url = https://github.com/foundry-rs/forge-std
+[submodule "smilee-v2-contracts/lib/openzeppelin-contracts"]
+	path = smilee-v2-contracts/lib/openzeppelin-contracts
+	url = https://github.com/OpenZeppelin/openzeppelin-contracts
+[submodule "smilee-v2-contracts/lib/v3-periphery"]
+	path = smilee-v2-contracts/lib/v3-periphery
+	url = https://github.com/uniswap/v3-periphery
+[submodule "smilee-v2-contracts/lib/v3-core"]
+	path = smilee-v2-contracts/lib/v3-core
+	url = https://github.com/uniswap/v3-core
+[submodule "smilee-v2-contracts/lib/solstat"]
+	path = smilee-v2-contracts/lib/solstat
+	url = https://github.com/primitivefinance/solstat
+[submodule "smilee-v2-contracts/lib/prb-math"]
+	path = smilee-v2-contracts/lib/prb-math
+	url = https://github.com/PaulRBerg/prb-math
+[submodule "smilee-v2-contracts/lib/chainlink-brownie-contracts"]
+	path = smilee-v2-contracts/lib/chainlink-brownie-contracts
+	url = https://github.com/smartcontractkit/chainlink-brownie-contracts
+[submodule "smilee-v2-contracts/lib/chimera"]
+	path = smilee-v2-contracts/lib/chimera
+	url = https://github.com/Recon-Fuzz/chimera
