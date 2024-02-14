@@ -1,0 +1,33 @@
+= Reference addresses for new deployments
+
+== Arbitrum
+
+=== ERC20 Tokens
+
+Data source: link:https://arbiscan.io/tokens[Arbiscan]
+
+* `USDC`: `0xaf88d065e77c8cC2239327C5EDb3A432268e5831`
+* `WETH`: `0x82aF49447D8a07e3bd95BD0d56f35241523fBab1`
+* `ARB`: `0x912CE59144191C1204E64559FE8253a0e49E6548`
+
+=== Chainlink price feeds
+
+Data source: link:https://docs.chain.link/data-feeds/price-feeds/addresses?network=arbitrum&page=1&categories=verified&search=ETH#arbitrum-mainnet[Chainlink]
+
+* `USDC/USD`: `0x50834F3163758fcC1Df9973b6e91f0F0F0434aD3`
+* `ETH/USD`: `0x639Fe6ab55C921f74e7fac1ee960C0B6293ba612`
+
+=== Uniswap
+
+Data source: link:https://docs.uniswap.org/contracts/v3/reference/deployments[Uniswap]
+
+* `UniswapV3Factory`: `0x1F98431c8aD98523631AE4a59f267346ea31F984`
+
+Swap paths:
+
+* WETH -[5 bps]- USDC:
++
+`0x82af49447d8a07e3bd95bd0d56f35241523fbab10001f4af88d065e77c8cc2239327c5edb3a432268e5831`
+* ARB -[5 bps]- WETH -[5 bps]- USDC
++
+`0x912ce59144191c1204e64559fe8253a0e49e65480001f482af49447d8a07e3bd95bd0d56f35241523fbab10001f4af88d065e77c8cc2239327c5edb3a432268e5831`

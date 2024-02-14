@@ -1,0 +1,18 @@
+{
+    "tabWidth": 4,
+    "useTabs": false,
+    "printWidth": 120,
+    "overrides": [
+        {
+            "files": [
+                "test/UniswapAdapter.t.sol",
+                "test/invariants/system/Properties.sol",
+                "test/invariants/system/PropertiesDescriptions.sol",
+                "test/unit/libraries/FinanceLib.t.sol"
+            ],
+            "options": {
+                "printWidth": 260
+            }
+        }
+    ]
+}
