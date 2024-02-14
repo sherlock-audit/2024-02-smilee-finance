@@ -1,0 +1,97 @@
+= Smilee
+
+This repository contains the source code for the v2 of Smilee.
+
+== Dependencies
+
+* link:https://github.com/dverso/foundry-env[Foundry environment]
+
+== Installation
+
+You have to create and fill a `.env` file from the `.env.template` one.
+
+== Licensing
+
+The primary license for this repository is the Business Source License 1.1 (`BUSL-1.1`), see link:./LICENSE.adoc[LICENSE.adoc]. However, some files may also be licensed under different licenses (as indicated in their SPDX headers) or remain unlicensed.
+
+== Deployment
+
+=== Local testnet
+
+. `make chain`
+. `make shell`
+. `source .env`
+. Compile in an optimized way:
++
+`export FOUNDRY_PROFILE="deployment"`
+. Deploy core contracts, libraries and base token:
++
+`forge script script/testnet/00_Libraries.s.sol:LibraryDeployer --fork-url $RPC_LOCALNET --broadcast -vvvv`
+. Deploy all libraries (copy deployed libraries's addresses from run-latest into foundry.toml in order to link):
++
+`forge script script/testnet/01_CoreFoundations.s.sol:DeployCoreFoundations --fork-url $RPC_LOCALNET --broadcast -vvvv`
+. Deploy a new `<SYMBOL>` token (e.g. "ETH" for "sETH"):
++
+`forge script script/testnet/02_Token.s.sol:DeployToken --fork-url $RPC_LOCALNET --broadcast -vvvv --sig 'deployToken(string memory)' <SYMBOL>`
+. Set a token price.:
++
+`forge script script/testnet/02_Token.s.sol:DeployToken --fork-url $RPC_LOCALNET --broadcast -vvvv --sig 'setTokenPrice(address,uint256)' <TOKEN_ADDRESS> <TOKEN_PRICE>`
+. Create an Impermanent Gain DVP and its Vault:
++
+`forge script script/testnet/03_Factory.s.sol:DeployDVP --fork-url $RPC_LOCALNET --broadcast -vvvv --sig 'createIGMarket(address,address,uint256)' <BASE_TOKEN_ADDRESS> <SIDE_TOKEN_ADDRESS> <EPOCH_FREQUENCY_IN_SECONDS>`
+. Roll the epoch for every DVP/Vault that need it:
++
+`forge script script/testnet/04_Epoch.s.sol:RollEpoch --fork-url $RPC_LOCALNET --broadcast -vvvv`
+. Mint and deposit the given `<AMOUNT>` of base tokens into the provided vault:
++
+`forge script script/testnet/05_Vault.s.sol:VaultOps --fork-url $RPC_LOCALNET --broadcast -vvvv --sig 'fillVault(address,uint256)' <VAULT_ADDRESS> <AMOUNT>`
+. Advance chain time:
++
+`cast rpc --rpc-url $RPC_LOCALNET evm_increaseTime <SECONDS> && cast rpc --rpc-url $RPC_LOCALNET evm_mine`
+. Mint tokens:
++
+`forge script script/testnet/02_Token.s.sol:DeployToken --fork-url $RPC_LOCALNET --broadcast -vvvv --sig 'mint(address,address,uint256)' <TOKEN_ADDRESS> <RECIPIENT_ADDRESS> <AMOUNT>`
+. `exit`
+
+=== Mainnet
+
+See link:./reference_addresses.adoc[reference_addresses.adoc] for reference addresses.
+
+. Fill in a `.env` file from the `.env.template` one.
+. `source .env`
+. Compile in an optimized way:
++
+`export FOUNDRY_PROFILE="deployment"`
+. Deploy libraries:
++
+`forge script script/mainnet/00_Libraries.s.sol:DeployLibraries --rpc-url $RPC_MAINNET --broadcast -vv`
+. Deploy core contracts:
++
+`forge script script/mainnet/01_CoreFoundations.s.sol:DeployCoreFoundations --rpc-url $RPC_MAINNET --broadcast -vv`
+. For each token of interest:
+.. Set Chainlink price feed:
++
+`forge script script/mainnet/02_Token.s.sol:TokenOps --rpc-url $RPC_MAINNET --broadcast -vv --sig 'setChainlinkPriceFeedForToken(address, address)' <TOKEN> <FEED>`
+. For each pair of tokens of interest:
+.. Configure the router to use Uniswap:
++
+`forge script script/mainnet/02_Token.s.sol:TokenOps --rpc-url $RPC_MAINNET --broadcast -vv --sig 'useUniswapAdapterWithTokens(address, address)' <TOKEN_1> <TOKEN_2>`
+.. Configure the Uniswap paths (mind the direction!):
++
+`forge script script/mainnet/02_Token.s.sol:TokenOps --rpc-url $RPC_MAINNET --broadcast -vv --sig 'setUniswapPath(address,address,bytes memory)' <TOKEN_IN> <TOKEN_OUT> <PATH>`
+. Create an Impermanent Gain DVP and its Vault:
++
+`forge script script/mainnet/03_Factory.s.sol:DeployDVP --rpc-url $RPC_MAINNET --broadcast -vv --sig 'createIGMarket(address,address,uint256,uint256)' <BASE_TOKEN_ADDRESS> <SIDE_TOKEN_ADDRESS> <EPOCH_FREQUENCY_IN_SECONDS> <FIRST_EPOCH_DURATION_IN_SECONDS>`
+
+=== Common issues:
+
+* If you get `Failed to get EIP-1559 fees`, append `--legacy` to the script.
+
+=== Estimated costs:
+
+* `00_Libraries`: 0.015440960753608698 ETH
+* `01_CoreFoundations`: 0.023188371928870066 ETH
+* `02_Token:setChainlinkPriceFeedForToken`: 0.000097779147085143 ETH
+* `02_Token:useUniswapAdapterWithTokens`: 0.00019751379515465 ETH
+* `02_Token:setUniswapPath`: 0.000272809126037758 ETH
+* `03_Factory:createIGMarket`: 0.021753528050732995 ETH
