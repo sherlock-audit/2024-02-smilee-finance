@@ -8,36 +8,3 @@
 # Q&A
 
 # Audit scope
-
-
-[smilee-v2-contracts @ ed26f5b95d592f684ba136799b122671e6022191](https://github.com/dverso/smilee-v2-contracts/tree/ed26f5b95d592f684ba136799b122671e6022191)
-- [smilee-v2-contracts/src/AddressProvider.sol](smilee-v2-contracts/src/AddressProvider.sol)
-- [smilee-v2-contracts/src/DVP.sol](smilee-v2-contracts/src/DVP.sol)
-- [smilee-v2-contracts/src/EpochControls.sol](smilee-v2-contracts/src/EpochControls.sol)
-- [smilee-v2-contracts/src/FeeManager.sol](smilee-v2-contracts/src/FeeManager.sol)
-- [smilee-v2-contracts/src/IG.sol](smilee-v2-contracts/src/IG.sol)
-- [smilee-v2-contracts/src/MarketOracle.sol](smilee-v2-contracts/src/MarketOracle.sol)
-- [smilee-v2-contracts/src/Vault.sol](smilee-v2-contracts/src/Vault.sol)
-- [smilee-v2-contracts/src/interfaces/IPositionManager.sol](smilee-v2-contracts/src/interfaces/IPositionManager.sol)
-- [smilee-v2-contracts/src/lib/Amount.sol](smilee-v2-contracts/src/lib/Amount.sol)
-- [smilee-v2-contracts/src/lib/AmountsMath.sol](smilee-v2-contracts/src/lib/AmountsMath.sol)
-- [smilee-v2-contracts/src/lib/EpochController.sol](smilee-v2-contracts/src/lib/EpochController.sol)
-- [smilee-v2-contracts/src/lib/EpochFrequency.sol](smilee-v2-contracts/src/lib/EpochFrequency.sol)
-- [smilee-v2-contracts/src/lib/Finance.sol](smilee-v2-contracts/src/lib/Finance.sol)
-- [smilee-v2-contracts/src/lib/FinanceIG.sol](smilee-v2-contracts/src/lib/FinanceIG.sol)
-- [smilee-v2-contracts/src/lib/FinanceIGDelta.sol](smilee-v2-contracts/src/lib/FinanceIGDelta.sol)
-- [smilee-v2-contracts/src/lib/FinanceIGPayoff.sol](smilee-v2-contracts/src/lib/FinanceIGPayoff.sol)
-- [smilee-v2-contracts/src/lib/FinanceIGPrice.sol](smilee-v2-contracts/src/lib/FinanceIGPrice.sol)
-- [smilee-v2-contracts/src/lib/Notional.sol](smilee-v2-contracts/src/lib/Notional.sol)
-- [smilee-v2-contracts/src/lib/Position.sol](smilee-v2-contracts/src/lib/Position.sol)
-- [smilee-v2-contracts/src/lib/SignedMath.sol](smilee-v2-contracts/src/lib/SignedMath.sol)
-- [smilee-v2-contracts/src/lib/TimeLock.sol](smilee-v2-contracts/src/lib/TimeLock.sol)
-- [smilee-v2-contracts/src/lib/TokensPair.sol](smilee-v2-contracts/src/lib/TokensPair.sol)
-- [smilee-v2-contracts/src/lib/VaultLib.sol](smilee-v2-contracts/src/lib/VaultLib.sol)
-- [smilee-v2-contracts/src/lib/WadTime.sol](smilee-v2-contracts/src/lib/WadTime.sol)
-- [smilee-v2-contracts/src/periphery/PositionManager.sol](smilee-v2-contracts/src/periphery/PositionManager.sol)
-- [smilee-v2-contracts/src/providers/SwapAdapterRouter.sol](smilee-v2-contracts/src/providers/SwapAdapterRouter.sol)
-- [smilee-v2-contracts/src/providers/chainlink/ChainlinkPriceOracle.sol](smilee-v2-contracts/src/providers/chainlink/ChainlinkPriceOracle.sol)
-- [smilee-v2-contracts/src/providers/uniswap/UniswapAdapter.sol](smilee-v2-contracts/src/providers/uniswap/UniswapAdapter.sol)
-
-
